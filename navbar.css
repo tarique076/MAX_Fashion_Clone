@@ -1,0 +1,41 @@
+#navbar{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#products{
+    margin-left: 10px;
+    display: flex;
+    width: 30%;
+    justify-content: space-evenly;
+}
+#cart{
+    width: 22%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+#products>div>img{
+    width: 80%;
+    height: 50%;
+    margin: 20% 0;
+}
+#products>div{
+    width: 18%;
+}
+#products>div{
+    width: 100%;
+    height: 100%;
+}
+#cart>div{
+    width: 45%;
+    height: 100%;
+}
+#cart>div>img{
+    width: 50%;
+    height:70%;
+    margin: 6% 0;
+
+}
