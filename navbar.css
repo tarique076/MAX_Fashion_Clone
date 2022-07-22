@@ -3,7 +3,10 @@
     height: 60px;
     display: flex;
     justify-content: space-between;
+    background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: sticky;
+    top: 0px;
 }
 #products{
     margin-left: 10px;
