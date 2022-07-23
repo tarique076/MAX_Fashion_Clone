@@ -15,7 +15,7 @@
     width: 30%;
     justify-content: space-evenly;
 }
-#cart{
+#cartC{
     width: 22%;
     display: flex;
     justify-content: space-between;
@@ -33,11 +33,11 @@
     width: 100%;
     height: 100%;
 }
-#cart>div{
+#cartC>div{
     width: 45%;
     height: 100%;
 }
-#cart>div>img{
+#cartC>div>img{
     width: 50%;
     height:70%;
     margin: 6% 0;
