@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="signin.css">
+    <link rel="stylesheet" href="signup.css">
     <style>
         #head{
             display: flex;
@@ -56,9 +58,26 @@
             padding: 1px 0;
             border-radius: 5px;
         }
+        
     </style>
 </head>
 <body>
+    <div id="signupBox">
+        <h1>Sign up or Sign in</h1>
+        <p>Enjoy the convenience of a single account across all participating brands</p>
+        <label for="Mob"><b>Mobile Number</b></label><br>
+        <input type="number" placeholder="Enter your mobile number" id="mob"><br>
+        <button id="con">Continue</button>
+        <button class="close">X</button>
+    </div>
+    <div id="signinBox">
+        <h1>Sign up or Sign in</h1>
+        <p>Enjoy the convenience of a single account across all participating brands</p>
+        <label for="otp"><b>Verify With OTP</b></label><br>
+        <input type="number" placeholder="Enter OTP" id="otp"><br>
+        <button id="con1">Continue</button>
+        <button class="close">X</button>
+    </div>
     <div id="head">
         <div>
             <div class="tooltip">
@@ -166,6 +185,52 @@
         window.location.href="cart.html"
     });
     document.querySelector("#sign").addEventListener("click",function(){
-        window.location.href="signup.html"
+        document.querySelector("#signupBox").style.zIndex=10;
+        document.querySelector("#signupBox").style.visibility='visible';
+
+        let otp=[123456, 321456, 456789, 963258, 787897, 123789, 456321, 789654];
+        document.querySelector("#con").addEventListener("click", function(){
+            let mob=document.querySelector("#mob").value;
+            if(mob.length==10){
+                document.querySelector("#signinBox").style.zIndex=10;
+                document.querySelector("#signinBox").style.visibility='visible'
+                mob="";
+                document.querySelector("#con1").addEventListener("click", function(){
+                    let selectedOTP=document.querySelector("#otp").value;
+                    let count=0;
+                    for(let i=0; i<otp.length; i++){
+                        if(selectedOTP==otp[i]){
+                            count++;
+                        }
+                    }
+                    if(count>0){
+                        alert("Sign In Successful")
+                        document.querySelector("#signinBox").style.zIndex=-1;
+                        document.querySelector("#signupBox").style.zIndex=-1;
+                        selectedOTP="";
+                        document.querySelector("#signinBox").style.visibility='hidden'
+                        document.querySelector("#signupBox").style.visibility='hidden'
+                    }else{
+                        alert("Invalid OTP");
+                        selectedOTP="";
+                    }
+
+                })
+            }
+            else{
+                mob="";
+                alert("Please enter a valid 10 digit no.");
+            }
+        })
+        let close=document.querySelectorAll(".close");
+        close.forEach(function(el){
+            el.addEventListener("click", function(){
+            document.querySelector("#signinBox").style.zIndex=-1;
+            document.querySelector("#signupBox").style.zIndex=-1;
+            document.querySelector("#signinBox").style.visibility='hidden'
+            document.querySelector("#signupBox").style.visibility='hidden'
+            })
+        })
+        
     })
 </script>
