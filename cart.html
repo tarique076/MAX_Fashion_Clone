@@ -36,42 +36,83 @@
         .tooltip:hover .tooltiptext{
             visibility: visible;
         }
-        #slide{
-            width: 90%;
-            margin: 30px auto;
-        }
-        #crauser{
-            width: 100%;
-        }
-        #slide>button{
-            position: absolute;
-            top: 55%;
-            font-size: 25px;
-            background-color: rgba(100, 100, 100, 0);
-            border: 0px;
-        }
-        #slide>button:nth-child(2){
-            left: 4%;
-        }
-        #slide>button:nth-child(3){
-            right: 4%;
-        }
-        #promo{
+        #cart_heading{
             width: 90%;
             margin: auto;
         }
-        #promo>a>img{
-            width: 100%;
+        #cart_heading>h1{
+            font-weight: lighter;
         }
-
-        #spot{
-            width: 90%;
-            margin: 60px auto;
-        }
-        #spot>div{
+        #cartItems{
             display: flex;
+            width: 90%;
+            margin: auto;
+            gap: 15px;
         }
-        
+        #items{
+            width: 70%;
+        }
+        #bill{
+            width: 30%;
+        }
+        #bill>div{
+            border: 1px solid grey;
+            margin-bottom: 5px;
+            padding: 10px;
+        }
+        #bill>div:first-child>div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #bill>div>div>label,input,button{
+            padding: 5px;
+        }
+        #bill>div>div{
+            display: flex;
+            justify-content: space-between;
+            height: 40px;
+        }
+        #bill>div:last-child>button{
+            width: 100%;
+            background-color: blue;
+            padding: 15px;
+            border: 0;
+            color: white;
+            font-weight: bold;
+        }
+        #items>div{
+            display: flex;
+            height: auto;
+            border: 1px solid grey;
+            margin-bottom: 10px;
+            padding: 15px;
+            position: relative;
+            z-index: 0;
+        }
+        #items>div>div:first-child{
+            width: 20%;
+        }
+        #items>div>div:last-child{
+            width: 80%;
+        }
+        #items>div>div>img{
+            width: 90%;
+            /* margin: auto; */
+        }
+        #items>div>div>select{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        #remove{
+            width: 50%;
+            height: 40px;
+            margin-top: -10px;
+            justify-content: center;
+            color: blue;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -128,34 +169,46 @@
             </div>
         </div>
     </div>
-    
-    <div id="slide">
-        <a href="women_prod.html">
-            <img id="crauser" src="https://lmsin.net/cdn-cgi/image/w=1232,q=70,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/MAX-Banner6-desktop-Womenn-20JULY2022A.png" alt="">
-        </a> 
-        <button id="left"><b><</b></button>
-        <button id="right"><b>></b></button>
+    <div id="cart_heading">
+        <h1>Your Shopping Basket</h1>
+        <hr>
+        <h3 id="totalItems">0 </h3>
     </div>
-      
-    <div id="promo">
-        <a href="women_prod.html">
-            <img src="https://lmsin.net/cdn-cgi/image/w=1232,q=70,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/desktop-department-modularblock-oneBytwo1A-FREESHIPCOMMON-20JULY2022A.png" alt="">
-        </a>
-    </div>
-    
-    <div id="spot">
-        <h1>Style Spotlight</h1>
-        <div>
-            <div><a href="women_prod.html">
-                <img src="https://lmsin.net/cdn-cgi/image/w=616,q=70,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/desktop-modularblock17One-Women-29JUNE2022.png" alt="">
-            </a></div>
-            <div><a href="women_prod.html">
-                <img src="https://lmsin.net/cdn-cgi/image/w=616,q=70,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/desktop-modularblock17Two-Women-29JUNE2022.png" alt="">
-            </a></div>
+    <div id="cartItems">
+        <div id="items">
+
+        </div>
+        <div id="bill">
+            <div>
+                <div>
+                    <label for="">Deliver to</label>
+                    <input type="number" placeholder="Enter pincode" id="pin">
+                    <button id="pinchk">Check</button>
+                </div>
+                <p id="pinalert"></p>
+            </div>
+            <div>
+                <div>
+                    <div>Total MRP</div>
+                    <div >₹ <span id="cartTotal">0 </span></div>
+                </div>
+                <div>
+                    <div>Shipping charge</div>
+                    <div>Free</div>
+                </div>
+                <hr>
+                <div>
+                    <div><b>Total</b></div>
+                    <div>₹<span id="totalPrice">0</span></div>
+                </div>
+                <button>Checkout now</button>
+            </div>
         </div>
     </div>
+
 </body>
 </html>
+
 <script>
     document.querySelector("#home").addEventListener("click",function(){
         window.location.href="index.html";
@@ -189,32 +242,109 @@
     });
     document.querySelector("#sign").addEventListener("click",function(){
         window.location.href="signup.html"
-    });
-
-    // crauser JS
-    let crauser_image=[
-    "https://lmsin.net/cdn-cgi/image/w=1232,q=70,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/MAX-Banner6-desktop-Womenn-20JULY2022A.png",
-    "https://lmsin.net/cdn-cgi/image/w=1232,q=85,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/MAX-Banner1-desktop-Women-14JULY2022.png",
-    "https://lmsin.net/cdn-cgi/image/w=1232,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/MAX-Banner4-desktop-Women-14JULY2022.png",
-    "https://lmsin.net/cdn-cgi/image/w=1232,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/MAX-Banner5-desktop-Women-14JULY2022.png"
-    ];
-    let crauser=document.querySelector("#crauser");
-    let leftbtn= document.querySelector("#left");
-    let rightbtn=document.querySelector("#right");
-
-    let imageState=0;
-    rightbtn.addEventListener("click", function(){
-        imageState++;
-        if(imageState==crauser_image.length){
-            imageState=0;
-        }
-        crauser.src=crauser_image[imageState];
     })
-    leftbtn.addEventListener("click", function(){
-        imageState--;
-        if(imageState<0){
-            imageState=crauser_image.length-1;
+</script>
+<!-- Cart JS  -->
+<script>
+    let cart=JSON.parse(localStorage.getItem("cartItems"))||[];
+    document.querySelector("#totalItems").innerText=cart.length+"   "+"Products"
+
+    displayCart(cart);
+    displayBill(cart);
+
+    function displayCart(cart){
+        let items=document.querySelector("#items");
+        items.innerHTML="";
+        cart.forEach(function(el,i){
+            let div=document.createElement("div");
+            let div1=document.createElement("div");
+            let img=document.createElement("img");
+            img.src= el.image_url
+            div1.append(img);
+            let div2=document.createElement("div");
+            let name=document.createElement("h4");
+            name.innerText=el.name;
+            let price=document.createElement("h4");
+            price.innerText="₹"+" "+el.price;
+            el.qty=1;
+            let qty=document.createElement("select");
+            qty.setAttribute("class", "qty");
+            let qty1=document.createElement("option");
+            qty1.value="1";
+            qty1.innerText="Qty"
+            let qty2=document.createElement("option");
+            qty2.value="1";
+            qty2.innerText="1"
+            let qty3=document.createElement("option");
+            qty3.value="2";
+            qty3.innerText="2"
+            let qty4=document.createElement("option");
+            qty4.value="3";
+            qty4.innerText="3"
+            let qty5=document.createElement("option");
+            qty5.value="4";
+            qty5.innerText="4"
+            let qty6=document.createElement("option");
+            qty6.value="5";
+            qty6.innerText="5"
+            qty.append(qty1,qty2,qty3,qty4,qty5,qty6);
+            qty.addEventListener("change", function(){
+                let q=qty.value;
+                price.innerText="₹"+" "+(el.price*q)
+                el.qty=q;
+                displayBill(cart);
+
+            })
+
+            div2.append(name,price,qty);
+           
+            let remove=document.createElement("div");
+            remove.setAttribute("id", "remove");
+            remove.innerText="Remove";
+            remove.addEventListener("click", function(){
+                cart.splice(i,1);
+                localStorage.setItem("cartItems", JSON.stringify(cart));
+                // window.location.reload();
+                displayCart(cart);
+                displayBill(cart);
+                document.querySelector("#totalItems").innerText=cart.length+"   "+"Products";
+            })
+
+            div.append(div1,div2);
+            items.append(div, remove);
+        })
+    }
+
+    function displayBill(cart){
+        let c_total=document.querySelector("#cartTotal");
+        let total=document.querySelector("#totalPrice");
+        let finalAmt=0;
+        for(let i=0; i<cart.length;i++){
+            finalAmt=finalAmt+(cart[i].price*(+(cart[i].qty)));
         }
-        crauser.src=crauser_image[imageState];
+        c_total.innerText=finalAmt;
+        total.innerText=finalAmt;
+    }
+
+    let pins=[834001, 560051, 560053, 560093, 834002, 760025, 560051];
+
+    document.querySelector("#pinchk").addEventListener("click", function(){
+        let selected=document.querySelector("#pin").value;
+        console.log(selected);
+        let count=0;
+        for(let i=0; i<pins.length; i++){
+            if(selected==pins[i]){
+                count++;
+            }
+        }
+        if(count==0){
+           al= document.querySelector("#pinalert");
+           al.innerText="We're sorry! This pincode is either invalid or not-serviceable"
+           al.style.color="red"
+        }else{
+            al= document.querySelector("#pinalert");
+            al.innerText="Pincode Updated !"
+            al.style.color="green"
+        }
     })
 </script>
